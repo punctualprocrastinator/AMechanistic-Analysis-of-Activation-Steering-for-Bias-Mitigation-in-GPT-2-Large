@@ -1,49 +1,68 @@
-A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large
-This repository contains the official implementation for the paper "A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large," accepted to the 2nd Workshop on Mechanistic Interpretability at NeurIPS 2025.
 
-This project provides a complete, end-to-end system that uses techniques from mechanistic interpretability to both identify and actively mitigate bias directly within a model's internal workings. Our contribution is a systematic, layer-by-layer analysis of the foundational Contrastive Activation Addition (CAA) method, offering a reproducible baseline and educational tool for the community.
 
-🚀 Overview
-Instead of treating large language models as black boxes, this project "looks inside" to understand how and where gpt2-large represents abstract concepts like social bias. We use this understanding to perform real-time interventions, steering the model away from generating harmful content without any retraining.
+---
 
-Key Findings
-Our analysis reveals that representations of bias become linearly separable and highly detectable in the later layers (16-35) of the gpt2-large architecture. By intervening at these precise locations, we can effectively mitigate biased outputs with minimal intervention.
+# A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large
 
-Figure 1: Bias detection accuracy (AUC) of probes trained on the residual stream activations at each layer of gpt2-large. Performance increases dramatically and plateaus in the later layers.
+This repository contains the official implementation for the paper "A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large," accepted to the 2nd Workshop on Mechanistic Interpretability at NeurIPS 2024.
 
-Figure 2: PCA visualization of activations from the most predictive layer (blocks.16.hook_resid_post), showing a clear linear separation between neutral (blue) and biased (red) examples.
+This project presents an end-to-end system that uses techniques from mechanistic interpretability to identify and actively mitigate bias within the internal workings of the GPT-2 Large model.
 
-✨ Core Features
-Systematic Layer-wise Analysis: The first detailed, layer-by-layer analysis of where bias is represented across all 36 layers of gpt2-large.
+## 🚀 Overview
 
-End-to-End Reproducible System: A complete, documented pipeline from data generation to real-time steering.
+Rather than treating large language models as black boxes, this project explores the internal representations of GPT-2 Large to understand how concepts like social bias are encoded. By uncovering these mechanisms, we are able to directly intervene and reduce bias in model outputs.
 
-Built with TransformerLens: A clean, educational implementation using the standard TransformerLens interpretability library.
+## Key Findings
 
-Real-Time Mitigation: A demonstration of bias mitigation during inference without costly fine-tuning or retraining.
-🛠️ Setup and Installation
+- Representations of bias become linearly separable and highly detectable in the later layers (16-35) of the GPT-2 Large architecture.
+- By intervening at these precise locations, the system can mitigate bias in real-time, without retraining or fine-tuning the model.
+
+## ✨ Core Features
+
+- **Systematic Layer-wise Analysis:** Detailed, layer-by-layer analysis of where bias is represented across all 36 layers of GPT-2 Large.
+- **End-to-End Reproducible System:** Complete pipeline from data generation to real-time steering.
+- **Built with TransformerLens:** Implementation uses the standard TransformerLens interpretability library.
+- **Real-Time Mitigation:** Demonstration of bias mitigation during inference without expensive retraining.
+
+## 🛠️ Setup and Installation
+
 This project is optimized for Google Colab with a GPU runtime.
 
-# 1. Clone the repository
-git clone
-cd Activation-Steering-for-Bias-Mitigation
+1. **Clone the repository**
+   ```bash
+   git clone 
+   cd AMechanistic-Analysis-of-Activation-Steering-for-Bias-Mitigation-in-GPT-2-Large
+   ```
 
-# 2. Install dependencies
-pip install -r requirements.txt
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-⚡ How to Run
+## ⚡ How to Run
+
 To run the full pipeline (training probes, computing steering vectors, and testing mitigation), execute the main script:
 
+```bash
 python main.py
+```
 
-The script will perform the following steps:
+The script will:
 
-Load the gpt2-large model using TransformerLens.
+1. Load the GPT-2 Large model using TransformerLens.
+2. Generate a synthetic dataset of biased and neutral statements.
+3. Train a diagnostic linear probe for each of the 36 layers to detect bias.
+4. Compute the steering vectors using Contrastive Activation Addition (CAA).
+5. Run tests for both bias detection and bias mitigation, printing results to the console.
 
-Generate the synthetic dataset of biased and neutral statements.
+## 📄 License
 
-Train a diagnostic linear probe for each of the 36 layers to detect bias.
+This repository is released under the MIT License.
 
-Compute the steering vectors using Contrastive Activation Addition (CAA).
+## 🤝 Contributions
 
-Run tests for both bias detection on new sentences and bias mitigation on biased prompts, printing the results to the console.
+Contributions, issues, and feature requests are welcome! Feel free to open an issue or submit a pull request.
+
+---
+
+Let me know if you want any further customization or to include other sections! If you'd like this new README committed to your repository, just say so.
