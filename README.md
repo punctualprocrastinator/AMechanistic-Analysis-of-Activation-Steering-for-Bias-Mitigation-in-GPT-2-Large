@@ -4,7 +4,7 @@
 
 # A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large
 
-This repository contains the official implementation for the paper "A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large," accepted to the 2nd Workshop on Mechanistic Interpretability at NeurIPS 2024.
+This repository contains the official implementation for the paper "A Mechanistic Analysis of Activation Steering for Bias Mitigation in GPT-2 Large," 
 
 This project presents an end-to-end system that uses techniques from mechanistic interpretability to identify and actively mitigate bias within the internal workings of the GPT-2 Large model.
 
